@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infografis: Portofolio AI untuk Pemula</title>
+    <title>Infografis Interaktif: Portofolio AI untuk Pemula</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,24 @@
         }
         .card-border-parent {
             border-color: #38bdf8; /* sky-500 */
+        }
+        /* Style untuk transisi accordion yang halus */
+        .prompt-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out, padding 0.5s ease-in-out;
+            padding-left: 1rem; /* px-4 */
+            padding-right: 1rem; /* px-4 */
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .prompt-content.open {
+            max-height: 1200px; /* Set tinggi maksimal yang cukup besar untuk konten baru */
+            padding-top: 0.5rem; /* pt-2 */
+            padding-bottom: 1rem; /* pb-4 */
+        }
+        .chevron-icon {
+            transition: transform 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -47,16 +65,9 @@
         <section class="mb-16">
             <h2 class="text-3xl font-bold text-center text-white mb-8">👥 Persona & Kebutuhan Pengguna</h2>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
                 <!-- Teen Persona Card -->
-                <div class="bg-slate-800 p-6 rounded-2xl border-t-4 card-border-teen shadow-2xl shadow-teal-500/10">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-teal-500/10 p-3 rounded-full mr-4">
-                            <!-- Icon for Teen -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-teal-400">Remaja (13-17)</h3>
-                    </div>
+                <div class="bg-slate-800 p-6 rounded-2xl border-t-4 card-border-teen shadow-2xl shadow-teal-500/10 transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-bold text-teal-400 mb-4">Remaja (13-17)</h3>
                     <div class="space-y-3 text-slate-300">
                         <p><strong class="font-semibold text-white">Kebutuhan:</strong> Tugas sekolah, ide kreatif, hiburan.</p>
                         <p><strong class="font-semibold text-white">Tantangan:</strong> Cepat bosan, menyukai hal instan & visual.</p>
@@ -65,14 +76,8 @@
                 </div>
 
                 <!-- Parent Persona Card -->
-                <div class="bg-slate-800 p-6 rounded-2xl border-t-4 card-border-parent shadow-2xl shadow-sky-500/10">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-sky-500/10 p-3 rounded-full mr-4">
-                             <!-- Icon for Parent -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-sky-400">Orang Tua (40+)</h3>
-                    </div>
+                <div class="bg-slate-800 p-6 rounded-2xl border-t-4 card-border-parent shadow-2xl shadow-sky-500/10 transition-transform duration-300 hover:scale-105">
+                     <h3 class="text-2xl font-bold text-sky-400 mb-4">Orang Tua (40+)</h3>
                     <div class="space-y-3 text-slate-300">
                         <p><strong class="font-semibold text-white">Kebutuhan:</strong> Mencari informasi, membantu anak, komunikasi.</p>
                         <p><strong class="font-semibold text-white">Tantangan:</strong> Gagap teknologi, takut salah atau merusak.</p>
@@ -84,58 +89,85 @@
 
         <!-- Prompts Section -->
         <section>
-            <h2 class="text-3xl font-bold text-center text-white mb-10">✍️ Contoh Prompt & Tips</h2>
+            <h2 class="text-3xl font-bold text-center text-white mb-10">✍️ Contoh Prompt, Hasil & Catatan</h2>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-
                 <!-- Prompts for Teens -->
-                <div class="space-y-6">
-                    <h3 class="text-2xl font-bold text-teal-400 text-center lg:text-left">Untuk Remaja</h3>
-                    <div class="space-y-4">
-                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700 hover:border-teal-500 transition-colors">"Tuliskan ringkasan bab 1 novel Laskar Pelangi dalam 200 kata, gunakan gaya bahasa anak SMA."</div>
-                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700 hover:border-teal-500 transition-colors">"Buatkan 3 caption Instagram singkat dan keren untuk membahas pentingnya literasi di kalangan remaja."</div>
-                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700 hover:border-teal-500 transition-colors">"Berikan ide cerita pendek remaja bertema persahabatan dan teknologi, berlatar di sekolah."</div>
-                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700 hover:border-teal-500 transition-colors">"Jelaskan peristiwa Proklamasi Kemerdekaan Indonesia seperti sedang bercerita kepada teman sebaya."</div>
-                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700 hover:border-teal-500 transition-colors">"Berikan 5 pertanyaan pilihan ganda tentang teks eksplanasi beserta jawabannya untuk latihan ujian."</div>
-                    </div>
-                    <div class="bg-teal-900/50 border border-teal-700 p-5 rounded-lg">
-                        <h4 class="font-bold text-teal-300 flex items-center mb-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="m15 3 6 6"/><path d="M9 17H5"/></svg>
-                            Tips untuk Remaja
-                        </h4>
-                        <ul class="list-disc list-inside text-teal-300/90 space-y-1">
-                            <li>Gunakan gaya bahasa santai: "pake gaya anak SMA".</li>
-                            <li>Batasi panjang jawaban: "dalam 200 kata".</li>
-                            <li>Tambahkan konteks yang jelas: "untuk caption IG".</li>
-                        </ul>
-                    </div>
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold text-teal-400 text-center lg:text-left mb-4">Untuk Remaja</h3>
+                    <!-- All 5 prompts for teens -->
+                    <div class="prompt-container bg-slate-800 rounded-lg border border-slate-700 transition-all duration-300 hover:border-teal-500"><button class="prompt-toggle w-full text-left p-4 flex justify-between items-center cursor-pointer"><span class="font-semibold">Meringkas Bacaan Sekolah</span><svg class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="prompt-content"><strong class="block text-slate-300 mb-1 mt-2">Prompt:</strong><p class="prompt-text-to-copy text-slate-400">"Tuliskan ringkasan bab 1 novel Laskar Pelangi dalam 200 kata, gunakan gaya bahasa anak SMA."</p><button class="copy-btn mt-3 bg-teal-500/10 text-teal-300 px-3 py-1 rounded-md text-sm hover:bg-teal-500/20">Copy Prompt</button><strong class="block text-slate-300 mb-1 mt-4">Contoh Hasil:</strong><blockquote class="border-l-2 border-slate-600 pl-3 text-slate-400 italic">Ikal adalah anak desa Belitong yang cerdas dan punya rasa ingin tahu besar...</blockquote><strong class="block text-slate-300 mb-1 mt-4">Catatan:</strong><p class="text-slate-500 text-sm">Berguna untuk latihan menulis ulang informasi penting dari bacaan dengan gaya yang sesuai usia remaja.</p></div></div>
+                    <div class="prompt-container bg-slate-800 rounded-lg border border-slate-700 transition-all duration-300 hover:border-teal-500"><button class="prompt-toggle w-full text-left p-4 flex justify-between items-center cursor-pointer"><span class="font-semibold">Ide Caption Instagram Edukatif</span><svg class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="prompt-content"><strong class="block text-slate-300 mb-1 mt-2">Prompt:</strong><p class="prompt-text-to-copy text-slate-400">"Buatkan 3 caption Instagram singkat dan keren untuk membahas pentingnya literasi di kalangan remaja."</p><button class="copy-btn mt-3 bg-teal-500/10 text-teal-300 px-3 py-1 rounded-md text-sm hover:bg-teal-500/20">Copy Prompt</button><strong class="block text-slate-300 mb-1 mt-4">Contoh Hasil:</strong><div class="space-y-2 text-slate-400 italic"><blockquote class="border-l-2 border-slate-600 pl-3">"Buku bukan cuma tumpukan kertas. Ia jendela dunia. #LiterasiRemaja"</blockquote><blockquote class="border-l-2 border-slate-600 pl-3">"Scroll boleh, baca juga yuk! 10 menit per hari bisa ubah cara pikirmu."</blockquote><blockquote class="border-l-2 border-slate-600 pl-3">"Semua orang keren itu... rajin baca. Mulai dari kamu."</blockquote></div><strong class="block text-slate-300 mb-1 mt-4">Catatan:</strong><p class="text-slate-500 text-sm">Cocok untuk edukasi digital yang relate dengan keseharian remaja.</p></div></div>
+                    <div class="prompt-container bg-slate-800 rounded-lg border border-slate-700 transition-all duration-300 hover:border-teal-500"><button class="prompt-toggle w-full text-left p-4 flex justify-between items-center cursor-pointer"><span class="font-semibold">Inspirasi Cerpen Remaja</span><svg class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="prompt-content"><strong class="block text-slate-300 mb-1 mt-2">Prompt:</strong><p class="prompt-text-to-copy text-slate-400">"Berikan ide cerita pendek remaja bertema persahabatan dan teknologi, berlatar di sekolah."</p><button class="copy-btn mt-3 bg-teal-500/10 text-teal-300 px-3 py-1 rounded-md text-sm hover:bg-teal-500/20">Copy Prompt</button><strong class="block text-slate-300 mb-1 mt-4">Contoh Hasil:</strong><blockquote class="border-l-2 border-slate-600 pl-3 text-slate-400 italic">Seorang siswa introvert menemukan teman sejatinya melalui proyek membuat chatbot sekolah. Mereka membentuk tim AI Club dan menghadapi tantangan kompetisi antar sekolah.</blockquote><strong class="block text-slate-300 mb-1 mt-4">Catatan:</strong><p class="text-slate-500 text-sm">Mendorong imajinasi dan ide kreatif remaja.</p></div></div>
+                    <div class="prompt-container bg-slate-800 rounded-lg border border-slate-700 transition-all duration-300 hover:border-teal-500"><button class="prompt-toggle w-full text-left p-4 flex justify-between items-center cursor-pointer"><span class="font-semibold">Belajar Sejarah Jadi Asyik</span><svg class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="prompt-content"><strong class="block text-slate-300 mb-1 mt-2">Prompt:</strong><p class="prompt-text-to-copy text-slate-400">"Jelaskan peristiwa Proklamasi Kemerdekaan Indonesia seperti sedang bercerita kepada teman sebaya."</p><button class="copy-btn mt-3 bg-teal-500/10 text-teal-300 px-3 py-1 rounded-md text-sm hover:bg-teal-500/20">Copy Prompt</button><strong class="block text-slate-300 mb-1 mt-4">Contoh Hasil:</strong><blockquote class="border-l-2 border-slate-600 pl-3 text-slate-400 italic">Jadi gini, pagi-pagi tanggal 17 Agustus 1945, Soekarno dan Hatta udah siap-siap ngebacain teks proklamasi. Mereka pakai mikrofon seadanya, di rumah di Jl. Pegangsaan Timur. Itu jadi awal dari Indonesia merdeka! Keren, kan?</blockquote><strong class="block text-slate-300 mb-1 mt-4">Catatan:</strong><p class="text-slate-500 text-sm">Membuat sejarah lebih mudah dipahami dan diingat.</p></div></div>
+                    <div class="prompt-container bg-slate-800 rounded-lg border border-slate-700 transition-all duration-300 hover:border-teal-500"><button class="prompt-toggle w-full text-left p-4 flex justify-between items-center cursor-pointer"><span class="font-semibold">Jawaban Kuis Interaktif</span><svg class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="prompt-content"><strong class="block text-slate-300 mb-1 mt-2">Prompt:</strong><p class="prompt-text-to-copy text-slate-400">"Berikan 5 pertanyaan pilihan ganda tentang teks eksplanasi beserta jawabannya untuk latihan ujian."</p><button class="copy-btn mt-3 bg-teal-500/10 text-teal-300 px-3 py-1 rounded-md text-sm hover:bg-teal-500/20">Copy Prompt</button><strong class="block text-slate-300 mb-1 mt-4">Contoh Hasil:</strong>
+                        <div class="space-y-4 text-slate-400">
+                            <div class="text-sm">
+                                <p>1. Tujuan dari teks eksplanasi adalah...</p>
+                                <ul class="list-disc list-inside pl-4 mt-1">
+                                    <li>A. Menghibur</li>
+                                    <li class="text-teal-400 font-semibold">B. Menjelaskan suatu proses ✅</li>
+                                    <li>C. Meyakinkan pembaca</li>
+                                    <li>D. Menyampaikan opini</li>
+                                </ul>
+                            </div>
+                            <div class="text-sm">
+                                <p>2. Ciri utama dari teks eksplanasi adalah...</p>
+                                <ul class="list-disc list-inside pl-4 mt-1">
+                                    <li>A. Mengandung dialog antar tokoh</li>
+                                    <li class="text-teal-400 font-semibold">B. Menguraikan sebab dan akibat ✅</li>
+                                    <li>C. Menggunakan bahasa gaul</li>
+                                    <li>D. Berisi langkah-langkah membuat sesuatu</li>
+                                </ul>
+                            </div>
+                            <div class="text-sm">
+                                <p>3. Struktur teks eksplanasi yang benar adalah...</p>
+                                <ul class="list-disc list-inside pl-4 mt-1">
+                                    <li>A. Identifikasi → Komplikasi → Resolusi</li>
+                                    <li>B. Pengenalan tokoh → Masalah → Penutup</li>
+                                    <li class="text-teal-400 font-semibold">C. Pernyataan umum → Deretan penjelas → Interpretasi ✅</li>
+                                    <li>D. Tujuan → Langkah-langkah → Penutup</li>
+                                </ul>
+                            </div>
+                            <div class="text-sm">
+                                <p>4. Kata hubung yang sering digunakan dalam teks eksplanasi adalah...</p>
+                                <ul class="list-disc list-inside pl-4 mt-1">
+                                    <li class="text-teal-400 font-semibold">A. Oleh karena itu, akibatnya, sehingga ✅</li>
+                                    <li>B. Tetapi, namun, walaupun</li>
+                                    <li>C. Lalu, kemudian, akhirnya</li>
+                                    <li>D. Seperti, misalnya, contohnya</li>
+                                </ul>
+                            </div>
+                            <div class="text-sm">
+                                <p>5. Topik yang biasa dibahas dalam teks eksplanasi adalah...</p>
+                                <ul class="list-disc list-inside pl-4 mt-1">
+                                    <li>A. Kisah percintaan</li>
+                                    <li>B. Keajaiban sulap</li>
+                                    <li class="text-teal-400 font-semibold">C. Proses terjadinya gunung meletus ✅</li>
+                                    <li>D. Cerita imajinasi dan fiksi</li>
+                                </ul>
+                            </div>
+                        </div>
+                    <strong class="block text-slate-300 mb-1 mt-4">Catatan:</strong><p class="text-slate-500 text-sm">Format ini sangat cocok untuk latihan mandiri dan bisa dimasukkan ke Google Form atau Quizizz.</p></div></div>
+                    <!-- Tips Box for Teens -->
+                    <div class="bg-teal-900/50 border border-teal-700 p-5 rounded-lg mt-6"><h4 class="font-bold text-teal-300 flex items-center mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><path d="m15 3 6 6"></path><path d="M9 17H5"></path></svg>Tips untuk Remaja</h4><ul class="list-disc list-inside text-teal-300/90 space-y-1"><li>Gunakan gaya bahasa santai: "pake gaya anak SMA".</li><li>Batasi panjang jawaban: "dalam 200 kata".</li><li>Tambahkan konteks yang jelas: "untuk caption IG".</li></ul></div>
                 </div>
 
                 <!-- Prompts for Parents -->
-                <div class="space-y-6">
-                    <h3 class="text-2xl font-bold text-sky-400 text-center lg:text-left">Untuk Orang Tua</h3>
-                    <div class="space-y-4">
-                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700 hover:border-sky-500 transition-colors">"Jelaskan apa itu media sosial kepada orang tua yang belum terbiasa internet, gunakan bahasa sederhana."</div>
-                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700 hover:border-sky-500 transition-colors">"Buat ringkasan pelajaran IPA kelas 5 SD tentang sistem pernapasan, agar mudah dipahami anak."</div>
-                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700 hover:border-sky-500 transition-colors">"Buatkan contoh pesan WhatsApp sopan untuk mengucapkan belasungkawa kepada teman kerja."</div>
-                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700 hover:border-sky-500 transition-colors">"Berikan 5 tips mengatur keuangan rumah tangga untuk orang tua dengan penghasilan tetap bulanan."</div>
-                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700 hover:border-sky-500 transition-colors">"Tuliskan panduan singkat untuk orang tua dalam mengenalkan penggunaan AI kepada anak SMP."</div>
-                    </div>
-                     <div class="bg-sky-900/50 border border-sky-700 p-5 rounded-lg">
-                        <h4 class="font-bold text-sky-300 flex items-center mb-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M15 14c.2-1 .7-1.7 1.5-2.5C17.7 10.5 19 9 19 7a4 4 0 0 0-8 0c0 2 1.3 3.5 2.5 4.5.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
-                            Tips untuk Orang Tua
-                        </h4>
-                        <ul class="list-disc list-inside text-sky-300/90 space-y-1">
-                            <li>Minta penjelasan sederhana: "jelaskan dengan bahasa sederhana".</li>
-                            <li>Minta format langkah-demi-langkah.</li>
-                            <li>Sebutkan tujuan penggunaan: "untuk pesan WhatsApp".</li>
-                        </ul>
-                    </div>
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold text-sky-400 text-center lg:text-left mb-4">Untuk Orang Tua</h3>
+                    <!-- All 5 prompts for parents -->
+                    <div class="prompt-container bg-slate-800 rounded-lg border border-slate-700 transition-all duration-300 hover:border-sky-500"><button class="prompt-toggle w-full text-left p-4 flex justify-between items-center cursor-pointer"><span class="font-semibold">Menjelaskan Istilah Modern</span><svg class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="prompt-content"><strong class="block text-slate-300 mb-1 mt-2">Prompt:</strong><p class="prompt-text-to-copy text-slate-400">"Jelaskan apa itu media sosial kepada orang tua yang belum terbiasa internet, gunakan bahasa sederhana."</p><button class="copy-btn mt-3 bg-sky-500/10 text-sky-300 px-3 py-1 rounded-md text-sm hover:bg-sky-500/20">Copy Prompt</button><strong class="block text-slate-300 mb-1 mt-4">Contoh Hasil:</strong><blockquote class="border-l-2 border-slate-600 pl-3 text-slate-400 italic">Media sosial adalah tempat di internet untuk berbagi cerita, foto, atau video. Kita bisa berkomunikasi dengan teman dan keluarga lewat tulisan atau gambar. Contohnya Facebook dan WhatsApp.</blockquote><strong class="block text-slate-300 mb-1 mt-4">Catatan:</strong><p class="text-slate-500 text-sm">Sederhana, tidak teknis, cocok untuk pemula.</p></div></div>
+                    <div class="prompt-container bg-slate-800 rounded-lg border border-slate-700 transition-all duration-300 hover:border-sky-500"><button class="prompt-toggle w-full text-left p-4 flex justify-between items-center cursor-pointer"><span class="font-semibold">Membantu Anak Belajar</span><svg class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="prompt-content"><strong class="block text-slate-300 mb-1 mt-2">Prompt:</strong><p class="prompt-text-to-copy text-slate-400">"Buat ringkasan pelajaran IPA kelas 5 SD tentang sistem pernapasan, agar mudah dipahami anak."</p><button class="copy-btn mt-3 bg-sky-500/10 text-sky-300 px-3 py-1 rounded-md text-sm hover:bg-sky-500/20">Copy Prompt</button><strong class="block text-slate-300 mb-1 mt-4">Contoh Hasil:</strong><blockquote class="border-l-2 border-slate-600 pl-3 text-slate-400 italic">Sistem pernapasan membantu kita bernapas. Udara masuk lewat hidung, lalu ke paru-paru. Paru-paru menukar oksigen dengan karbon dioksida. Udara kotor dikeluarkan saat kita menghembuskan napas.</blockquote><strong class="block text-slate-300 mb-1 mt-4">Catatan:</strong><p class="text-slate-500 text-sm">Dapat dibacakan ulang atau digunakan saat mendampingi belajar.</p></div></div>
+                    <div class="prompt-container bg-slate-800 rounded-lg border border-slate-700 transition-all duration-300 hover:border-sky-500"><button class="prompt-toggle w-full text-left p-4 flex justify-between items-center cursor-pointer"><span class="font-semibold">Menulis Ucapan WA Resmi</span><svg class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="prompt-content"><strong class="block text-slate-300 mb-1 mt-2">Prompt:</strong><p class="prompt-text-to-copy text-slate-400">"Buatkan contoh pesan WhatsApp sopan untuk mengucapkan belasungkawa kepada teman kerja."</p><button class="copy-btn mt-3 bg-sky-500/10 text-sky-300 px-3 py-1 rounded-md text-sm hover:bg-sky-500/20">Copy Prompt</button><strong class="block text-slate-300 mb-1 mt-4">Contoh Hasil:</strong><blockquote class="border-l-2 border-slate-600 pl-3 text-slate-400 italic">Turut berduka cita atas meninggalnya ibunda tercinta. Semoga keluarga yang ditinggalkan diberi kekuatan dan ketabahan.</blockquote><strong class="block text-slate-300 mb-1 mt-4">Catatan:</strong><p class="text-slate-500 text-sm">Membantu orang tua yang kurang percaya diri saat menulis.</p></div></div>
+                    <div class="prompt-container bg-slate-800 rounded-lg border border-slate-700 transition-all duration-300 hover:border-sky-500"><button class="prompt-toggle w-full text-left p-4 flex justify-between items-center cursor-pointer"><span class="font-semibold">Tips Mengatur Keuangan</span><svg class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="prompt-content"><strong class="block text-slate-300 mb-1 mt-2">Prompt:</strong><p class="prompt-text-to-copy text-slate-400">"Berikan 5 tips mengatur keuangan rumah tangga untuk orang tua dengan penghasilan tetap bulanan."</p><button class="copy-btn mt-3 bg-sky-500/10 text-sky-300 px-3 py-1 rounded-md text-sm hover:bg-sky-500/20">Copy Prompt</button><strong class="block text-slate-300 mb-1 mt-4">Contoh Hasil:</strong><ol class="list-decimal list-inside space-y-1 text-slate-400"><li>Buat anggaran bulanan dan catat pengeluaran.</li><li>Dahulukan kebutuhan pokok.</li><li>Sisihkan minimal 10% untuk tabungan.</li><li>Hindari utang konsumtif.</li><li>Belanja dengan daftar agar tidak impulsif.</li></ol><strong class="block text-slate-300 mb-1 mt-4">Catatan:</strong><p class="text-slate-500 text-sm">Praktis dan bisa langsung diterapkan dalam kehidupan sehari-hari.</p></div></div>
+                    <div class="prompt-container bg-slate-800 rounded-lg border border-slate-700 transition-all duration-300 hover:border-sky-500"><button class="prompt-toggle w-full text-left p-4 flex justify-between items-center cursor-pointer"><span class="font-semibold">Mendampingi Anak Belajar AI</span><svg class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="prompt-content"><strong class="block text-slate-300 mb-1 mt-2">Prompt:</strong><p class="prompt-text-to-copy text-slate-400">"Tuliskan panduan singkat untuk orang tua dalam mengenalkan penggunaan AI (seperti ChatGPT) kepada anak SMP."</p><button class="copy-btn mt-3 bg-sky-500/10 text-sky-300 px-3 py-1 rounded-md text-sm hover:bg-sky-500/20">Copy Prompt</button><strong class="block text-slate-300 mb-1 mt-4">Contoh Hasil:</strong><blockquote class="border-l-2 border-slate-600 pl-3 text-slate-400 italic">Ajarkan bahwa AI adalah alat bantu, bukan pengganti. Mulailah dari tugas-tugas ringan, seperti membuat ringkasan atau mencari ide. Awasi penggunaannya, pastikan digunakan dengan etika. Bicarakan juga soal kelebihan dan batasan AI.</blockquote><strong class="block text-slate-300 mb-1 mt-4">Catatan:</strong><p class="text-slate-500 text-sm">Meningkatkan kepercayaan diri orang tua dalam mendampingi anak menghadapi teknologi baru.</p></div></div>
+                    <!-- Tips Box for Parents -->
+                    <div class="bg-sky-900/50 border border-sky-700 p-5 rounded-lg mt-6"><h4 class="font-bold text-sky-300 flex items-center mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M15 14c.2-1 .7-1.7 1.5-2.5C17.7 10.5 19 9 19 7a4 4 0 0 0-8 0c0 2 1.3 3.5 2.5 4.5.8.8 1.3 1.5 1.5 2.5"></path><path d="M9 18h6"></path><path d="M10 22h4"></path></svg>Tips untuk Orang Tua</h4><ul class="list-disc list-inside text-sky-300/90 space-y-1"><li>Minta penjelasan sederhana: "jelaskan dengan bahasa sederhana".</li><li>Minta format langkah-demi-langkah.</li><li>Sebutkan tujuan penggunaan: "untuk pesan WhatsApp".</li></ul></div>
                 </div>
             </div>
         </section>
 
-        <!-- Reflection and Conclusion -->
+        <!-- Reflection and Conclusion Section -->
         <section class="mt-16 bg-slate-800/70 p-8 rounded-2xl border border-slate-700">
             <h2 class="text-3xl font-bold text-center text-white mb-6">💡 Refleksi & Kesimpulan</h2>
             <div class="max-w-3xl mx-auto text-center text-slate-300 space-y-4">
@@ -143,11 +175,11 @@
                 <p class="font-semibold text-lg text-white mt-4">Dengan edukasi dan arahan yang tepat, AI dapat menjadi alat yang inklusif dan bermanfaat nyata bagi semua kalangan.</p>
             </div>
         </section>
-        
+
         <!-- Footer -->
         <footer class="mt-16 border-t border-slate-700 pt-8 text-center text-slate-400">
-            <p class="font-bold text-lg text-white">R. Bagus Bashilla R (Boden)</p>
-            <div class="flex justify-center items-center space-x-6 my-4">
+             <p class="font-bold text-lg text-white">R. Bagus Bashilla R (Boden)</p>
+             <div class="flex justify-center items-center space-x-6 my-4">
                 <a href="mailto:bashllaboden1@gmail.com" class="flex items-center hover:text-sky-400 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                     Email
@@ -157,9 +189,58 @@
                     LinkedIn
                 </a>
             </div>
-            <p class="text-sm text-slate-500 mt-6">Tools yang Digunakan: ChatGPT, Gemini, Canva, Google Docs</p>
+            <p class="text-sm text-slate-500 mt-6">Tools yang Digunakan: ChatGPT, Gemini, Google Docs</p>
         </footer>
-
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const promptToggles = document.querySelectorAll('.prompt-toggle');
+            promptToggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const content = toggle.nextElementSibling;
+                    const chevron = toggle.querySelector('.chevron-icon');
+                    content.classList.toggle('open');
+                    if (content.classList.contains('open')) {
+                        chevron.style.transform = 'rotate(180deg)';
+                    } else {
+                        chevron.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const container = button.closest('.prompt-content');
+                    const promptTextElement = container.querySelector('.prompt-text-to-copy');
+                    const promptText = promptTextElement.innerText;
+                    
+                    const originalButtonText = button.innerText;
+                    const textArea = document.createElement('textarea');
+                    textArea.value = promptText;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        button.innerText = 'Copied!';
+                        button.classList.add('bg-green-500/20', 'text-green-300');
+                    } catch (err) {
+                        console.error('Gagal menyalin teks: ', err);
+                        button.innerText = 'Gagal Copy';
+                        button.classList.add('bg-red-500/20', 'text-red-300');
+                    }
+                    document.body.removeChild(textArea);
+
+                    setTimeout(() => {
+                        button.innerText = originalButtonText;
+                        button.classList.remove('bg-green-500/20', 'text-green-300', 'bg-red-500/20', 'text-red-300');
+                    }, 2000);
+                });
+            });
+        });
+    </script>
+
 </body>
-</html>
+</ht
